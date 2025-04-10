@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kurti Collection</title>
+  <link rel="stylesheet" href="kurtie.css">
+</head>
+<body>
+
+  <h1>Kurti Collection</h1>
+
+  <div class="kurti-grid">
+    <div class="kurti-card">
+      <img src="image/kurtie1.png" alt="Kurti 1">
+      <h3>Floral Kurti</h3>
+      <p>₹999</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="kurti-card">
+      <img src="image/kurtie2.png" alt="Kurti 2">
+      <h3>Anarkali Kurti</h3>
+      <p>₹1199</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="kurti-card">
+      <img src="image/kurtie3.png" alt="Kurti 3">
+      <h3>Casual Kurti</h3>
+      <p>₹849</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+  </div>
+  <script>
+  const buttons = document.querySelectorAll('.buy-btn');
+
+buttons.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    const cards = document.querySelectorAll('.kurti-card'); // ✅ class name must match HTML
+    const card = cards[index];
+    const image = card.querySelector('img').src;
+    const name = card.querySelector('h3').innerText;
+    const price = parseInt(card.querySelector('p').innerText.replace('₹', ''));
+
+    const item = { image, name, price };
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(item);
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    window.location.href = "carts.html"; // ✅ file name must match your cart page
+  });
+});
+</script>
+
+
+</body>
+</html>

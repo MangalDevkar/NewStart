@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jeans Collection</title>
+  <link rel="stylesheet" href="jeans.css">
+</head>
+<body>
+
+  <h1>Jeans Collection</h1>
+
+  <div class="jeans-grid">
+    <div class="jeans-card">
+      <img src="image/jeans1.png" alt="Jeans 1">
+      <h3>Denim Slim Fit</h3>
+      <p>₹1099</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="jeans-card">
+      <img src="image/jeans2.png" alt="Jeans 2">
+      <h3>Regular Fit Jeans</h3>
+      <p>₹1199</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+
+    <div class="jeans-card">
+      <img src="image/jeans3png.jpg" alt="Jeans 3">
+      <h3>Distressed Jeans</h3>
+      <p>₹1299</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+  </div>
+  <script>
+    const buttons = document.querySelectorAll('.buy-btn');
+
+    buttons.forEach((button, index) => {
+      button.addEventListener('click', () => {
+        const cards = document.querySelectorAll('.jeans-card');
+        const card = cards[index];
+        const image = card.querySelector('img').src;
+        const name = card.querySelector('h3').innerText;
+        const price = parseInt(card.querySelector('p').innerText.replace('₹', ''));
+
+        const item = { image, name, price };
+
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push(item);
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        window.location.href = "carts.html";
+      });
+    });
+  </script>
+
+</body>
+</html>

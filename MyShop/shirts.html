@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shirts Collection</title>
+  <link rel="stylesheet" href="shirts.css">
+  </head>
+<body>
+
+  <h1>All Shirts</h1>
+  <div class="shirt-grid">
+    <div class="shirt-card">
+      <img src="image/shirt1.png" alt="Shirt 1">
+      <h3>Casual Shirt</h3>
+      <p>₹699</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+       <div class="shirt-card">
+      <img src="image/shirt2.png" alt="Shirt 2">
+      <h3>Printed Shirt</h3>
+      <p>₹799</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+    <div class="shirt-card">
+      <img src="image/shirt3.png" alt="Shirt 3">
+      <h3>Formal Shirt</h3>
+      <p>₹899</p>
+      <button class="buy-btn">Buy Now</button>
+    </div>
+  </div>
+  <script>
+    const buttons = document.querySelectorAll('.buy-btn');
+
+    buttons.forEach((button, index) => {
+      button.addEventListener('click', () => {
+        const cards = document.querySelectorAll('.shirt-card');
+        const card = cards[index];
+        const image = card.querySelector('img').src;
+        const name = card.querySelector('h3').innerText;
+        const price = parseInt(card.querySelector('p').innerText.replace('₹', ''));
+
+        const item = { image, name, price };
+
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push(item);
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        // 🔁 Redirect to cart.html
+        window.location.href = "carts.html";
+      });
+    });
+  </script>
+  </body>
+</html>

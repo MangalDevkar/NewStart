@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #1565C0;
+  }
+
+  .jeans-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .jeans-card {
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    background-color: #e3f2fd;
+  }
+
+  .jeans-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .jeans-card h3 {
+    margin: 10px 0 5px;
+  }
+
+  .jeans-card p {
+    color: #1565C0;
+    font-weight: bold;
+  }
